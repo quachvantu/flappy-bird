@@ -26,4 +26,8 @@ public class Bird : MonoBehaviour
 
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision2D)
+    {
+        ScoreManager.Instance.AddScore();
+    }
 }

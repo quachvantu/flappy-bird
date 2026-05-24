@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Bird : MonoBehaviour
 {
     public static Bird Instance { get; private set; }
     public static bool isAlive = true;
+    public event EventHandler OnBirdDied;
     private void Awake()
     {
         Instance = this;
@@ -21,10 +23,9 @@ public class Bird : MonoBehaviour
     {
         if (isAlive)
         {
-            Debug.Log("Bird hit something!");
             isAlive = false;
-
         }
+        OnBirdDied?.Invoke(this, EventArgs.Empty);
     }
     private void OnTriggerEnter2D(Collider2D collision2D)
     {

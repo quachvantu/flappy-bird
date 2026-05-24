@@ -10,6 +10,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private Image[] digitImages;
 
     private int score = 0;
+    private int bestScore = 0;
     private void Awake()
     {
         Instance = this;
@@ -34,5 +35,20 @@ public class ScoreManager : MonoBehaviour
             digitImages[i].gameObject.SetActive(true);
             digitImages[i].sprite = numberSprites[scoreString[i] - '0'];
         }
+    }
+    public void ResetBestScore()
+    {
+        if (score > bestScore)
+        {
+            bestScore = score;
+        }
+    }
+    public int GetScore()
+    {
+        return score;
+    }
+    public int GetBestScore()
+    {
+        return bestScore;
     }
 }

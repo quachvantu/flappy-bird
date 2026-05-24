@@ -369,7 +369,7 @@ GameObject:
   - component: {fileID: 683410805}
   - component: {fileID: 683410804}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: StatsTextMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -505,7 +505,7 @@ GameObject:
   - component: {fileID: 811483507}
   - component: {fileID: 811483506}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: LabelTextMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2023,6 +2023,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2088173503}
+  - component: {fileID: 2088173504}
   m_Layer: 5
   m_Name: GameOverUI
   m_TagString: Untagged
@@ -2052,6 +2053,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2088173504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088173502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87089651adaf1e44896c9c1192796ee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statsTextMesh: {fileID: 683410804}
+  button: {fileID: 1868264353}
+  scoreUI: {fileID: 1829834749}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

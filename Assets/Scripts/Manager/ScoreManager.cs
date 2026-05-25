@@ -10,7 +10,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private Image[] digitImages;
 
     private int score = 0;
-    private int bestScore = 0;
+    private static int bestScore = 0;
     private void Awake()
     {
         Instance = this;

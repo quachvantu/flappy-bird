@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -15,6 +16,8 @@ public class GameOverUI : MonoBehaviour
         Bird.Instance.OnBirdDied += GameOverUI_OnBirdDied;
         button.onClick.AddListener(() =>
         {
+            GameManager.Instance.SetState(GameManager.State.WaitingToStart);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         });
     }
     private void Start()

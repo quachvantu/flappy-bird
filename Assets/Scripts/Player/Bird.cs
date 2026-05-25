@@ -6,11 +6,14 @@ using System;
 public class Bird : MonoBehaviour
 {
     public static Bird Instance { get; private set; }
-    public static bool isAlive = true;
+    private bool isAlive = true;
+    private Rigidbody2D rb;
+    private const float GRAVITY_NORMAL = 1f;
     public event EventHandler OnBirdDied;
     private void Awake()
     {
         Instance = this;
+        rb = GetComponent<Rigidbody2D>();
     }
     private void Update()
     {
@@ -30,5 +33,18 @@ public class Bird : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision2D)
     {
         ScoreManager.Instance.AddScore();
+    }
+
+    public void EnableGravity()
+    {
+        rb.gravityScale = GRAVITY_NORMAL;
+    }
+    public void DisableGravity()
+    {
+        rb.gravityScale = 0f;
+    }
+    public bool GetIsAlive()
+    {
+        return isAlive;
     }
 }

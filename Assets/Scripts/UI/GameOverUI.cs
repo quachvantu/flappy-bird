@@ -18,6 +18,7 @@ public class GameOverUI : MonoBehaviour
         {
             GameManager.Instance.SetState(GameManager.State.WaitingToStart);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            SoundManager.Instance.PlaySwooshClip();
         });
     }
     private void Start()

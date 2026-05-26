@@ -6,6 +6,7 @@ using System;
 public class Bird : MonoBehaviour
 {
     public static Bird Instance { get; private set; }
+    [SerializeField] private Animator animator;
     private bool isAlive = true;
     private Rigidbody2D rb;
     private const float GRAVITY_NORMAL = 1f;
@@ -27,12 +28,17 @@ public class Bird : MonoBehaviour
         if (isAlive)
         {
             isAlive = false;
+            animator.enabled = false;
+            SoundManager.Instance.PlayHitClip();
+            SoundManager.Instance.PlayDieClip();
+            OnBirdDied?.Invoke(this, EventArgs.Empty);
         }
-        OnBirdDied?.Invoke(this, EventArgs.Empty);
     }
     private void OnTriggerEnter2D(Collider2D collision2D)
     {
         ScoreManager.Instance.AddScore();
+        SoundManager.Instance.PlayPointClip();
+
     }
 
     public void EnableGravity()

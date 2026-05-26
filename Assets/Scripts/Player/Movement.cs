@@ -13,9 +13,14 @@ public class Movement : MonoBehaviour
     }
     private void Update()
     {
+        if (!Bird.Instance.GetIsAlive())
+        {
+            return;
+        }
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
             rb.velocity = new Vector2(rb.velocity.x, jump);
+            SoundManager.Instance.PlayWingClip();
         }
     }
 }

@@ -11,6 +11,7 @@ public class Bird : MonoBehaviour
     private Rigidbody2D rb;
     private const float GRAVITY_NORMAL = 1f;
     public event EventHandler OnBirdDied;
+    public event EventHandler OnPassedPipe;
     private void Awake()
     {
         Instance = this;
@@ -29,16 +30,12 @@ public class Bird : MonoBehaviour
         {
             isAlive = false;
             animator.enabled = false;
-            SoundManager.Instance.PlayHitClip();
-            SoundManager.Instance.PlayDieClip();
             OnBirdDied?.Invoke(this, EventArgs.Empty);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision2D)
     {
-        ScoreManager.Instance.AddScore();
-        SoundManager.Instance.PlayPointClip();
-
+        OnPassedPipe?.Invoke(this, EventArgs.Empty);
     }
 
     public void EnableGravity()

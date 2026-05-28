@@ -7,7 +7,7 @@ public class PipeMove : MonoBehaviour
     [SerializeField] private float moveSpeed = 3f;
     private void Update()
     {
-        if (Bird.Instance.GetIsAlive())
+        if (GameManager.Instance.GetState() == GameManager.State.Playing)
         {
             transform.position += Vector3.left * moveSpeed * Time.deltaTime;
         }

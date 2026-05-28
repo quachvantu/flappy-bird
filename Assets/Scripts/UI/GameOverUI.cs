@@ -16,14 +16,12 @@ public class GameOverUI : MonoBehaviour
         Bird.Instance.OnBirdDied += GameOverUI_OnBirdDied;
         button.onClick.AddListener(() =>
         {
-            GameManager.Instance.SetState(GameManager.State.WaitingToStart);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             SoundManager.Instance.PlaySwooshClip();
         });
     }
     private void Start()
     {
-        Debug.Log("Start");
         Hide();
     }
     private void GameOverUI_OnBirdDied(object sender, EventArgs e)

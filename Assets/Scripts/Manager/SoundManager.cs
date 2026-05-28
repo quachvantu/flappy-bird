@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,8 +17,27 @@ public class SoundManager : MonoBehaviour
     {
         Instance = this;
     }
+    public void Start()
+    {
+        Bird.Instance.OnPassedPipe += Bird_OnPassedPipe;
+        Bird.Instance.OnBirdDied += Bird_OnBirdDied;
+    }
+    private void OnDestroy()
+    {
+        Bird.Instance.OnPassedPipe -= Bird_OnPassedPipe;
+        Bird.Instance.OnBirdDied -= Bird_OnBirdDied;
+    }
+    private void Bird_OnBirdDied(object sender, EventArgs e)
+    {
+        PlayHitClip();
+        PlayDieClip();
+    }
+    private void Bird_OnPassedPipe(object sender, EventArgs e)
+    {
+        PlayPointClip();
+    }
 
-    public void PlayDieClip()
+    private void PlayDieClip()
     {
         audioSource.PlayOneShot(dieClip);
     }
@@ -25,11 +45,11 @@ public class SoundManager : MonoBehaviour
     {
         audioSource.PlayOneShot(wingClip);
     }
-    public void PlayPointClip()
+    private void PlayPointClip()
     {
         audioSource.PlayOneShot(pointClip);
     }
-    public void PlayHitClip()
+    private void PlayHitClip()
     {
         audioSource.PlayOneShot(hitClip);
     }
